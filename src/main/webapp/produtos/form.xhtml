@@ -2,28 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"> 
 
 <h:head></h:head> 
 <h:body> 
 	<h:form>
 		<div>
 			<h:outputLabel>Titulo</h:outputLabel>
-			<h:inputText/>
+			<h:inputText value="#{adminBooksBean.product.title}"/>
 		</div>
 		<div>
 			<h:outputLabel>Descrição</h:outputLabel>
-			<h:inputTextarea cols="20" rows="10" />
+			<h:inputTextarea cols="20" rows="10" value="#{adminBooksBean.product.description}" />
 		</div>
 		<div>
 			<h:outputLabel>Número de páginas</h:outputLabel>
-			<h:inputText/>
+			<h:inputText value="#{adminBooksBean.product.numberOfPages}"/>
 		</div>
 		<div>
 			<h:outputLabel>Preço</h:outputLabel>
-			<h:inputText/>
+			<h:inputText value="#{adminBooksBean.product.price}"/>
 		</div>
-		<h:commandButton value="Gravar" />
+		<h:commandButton value="Gravar" action="#{adminBooksBean.save}"/>
 	</h:form>
 </h:body> 
 </html>
