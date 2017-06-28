@@ -4,40 +4,40 @@ import java.math.BigDecimal;
 
 public class Book {
 	
-	Integer id;
-	String title;
-	String description;
-	int numberOfPages;
-	BigDecimal price;
+	private Integer id;
+	private String title;
+	private String description;
+	private int numberOfPages;
+	private BigDecimal price;
 	
-	private Integer getId() {
+	public Integer getId() {
 		return id;
 	}
-	private void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	private String getTitle() {
+	public String getTitle() {
 		return title;
 	}
-	private void setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
-	private String getDescription() {
+	public String getDescription() {
 		return description;
 	}
-	private void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
-	private int getNumberOfPages() {
+	public int getNumberOfPages() {
 		return numberOfPages;
 	}
-	private void setNumberOfPages(int numberOfPages) {
+	public void setNumberOfPages(int numberOfPages) {
 		this.numberOfPages = numberOfPages;
 	}
-	private BigDecimal getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	private void setPrice(BigDecimal price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	
