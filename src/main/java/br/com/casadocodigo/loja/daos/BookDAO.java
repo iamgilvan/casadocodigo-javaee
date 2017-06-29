@@ -5,13 +5,15 @@ import javax.persistence.PersistenceContext;
 
 import br.com.casadocodigo.loja.models.Book;
 
+
 public class BookDAO {
 	
 	@PersistenceContext
 	private EntityManager manager;
-	
-	public void save(Book product){
+		
+	public void save(Book product) {
 		manager.persist(product);
 	}
 
+	
 }
