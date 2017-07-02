@@ -1,5 +1,8 @@
 <html xmlns:h="http://java.sun.com/jsf/html"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:body>
 	<h:form>
 		<div>
@@ -7,8 +10,22 @@
 			<h:inputText value="#{adminBooksBean.product.title}" />
 		</div>
 		<div>
+			<h:outputLabel>Autores</h:outputLabel>
+			<h:selectManyListbox value="#{adminBooksBean.selectedAuthorsIds}">
+				<f:selectItems 
+					value="#{authorList.authors}" 
+					var="author"
+					itemLabel="#{author.name}"
+					itemValue="#{author.id}"/>
+			</h:selectManyListbox>
+		</div>
+		<div>
 			<h:outputLabel>Descrição</h:outputLabel>
-			<h:inputTextarea cols="20" rows="10" value="#{adminBooksBean.product.description}" />
+			<h:inputTextarea cols="10" rows="5" value="#{adminBooksBean.product.description}" />
+		</div>
+		<div>
+			<h:outputLabel>Número de páginas</h:outputLabel>
+			<h:inputText value="#{adminBooksBean.product.numberOfPages}" />
 		</div>
 		<div>
 			<h:outputLabel>Preço</h:outputLabel>
