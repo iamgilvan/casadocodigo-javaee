@@ -4,32 +4,33 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:body>
-	<h:form>
+	<h:form prependId="false">
 		<div>
 			<h:outputLabel>Titulo</h:outputLabel>
-			<h:inputText value="#{adminBooksBean.product.title}" />
+			<h:inputText value="#{adminBooksBean.product.title}" required="true" id="titulo" requiredMessage="Campo obrigatório"/>
+			<h:message for="titulo"/>
 		</div>
 		<div>
 			<h:outputLabel>Autores</h:outputLabel>
-			<h:selectManyListbox value="#{adminBooksBean.selectedAuthorsIds}">
-				<f:selectItems 
-					value="#{authorList.authors}" 
-					var="author"
-					itemLabel="#{author.name}"
-					itemValue="#{author.id}"/>
+			<h:selectManyListbox value="#{adminBooksBean.selectedAuthorsIds}" required="true" id="autores" requiredMessage="Campo obrigatório">
+				<f:selectItems value="#{authorList.authors}" var="author" itemLabel="#{author.name}" itemValue="#{author.id}"/>
 			</h:selectManyListbox>
+			<h:message for="autores"/>
 		</div>
 		<div>
 			<h:outputLabel>Descrição</h:outputLabel>
-			<h:inputTextarea cols="10" rows="5" value="#{adminBooksBean.product.description}" />
+			<h:inputTextarea cols="10" rows="5" value="#{adminBooksBean.product.description}" required="true" id="descricao" requiredMessage="Campo obrigatório" />
+			<h:message for="descricao"/>
 		</div>
 		<div>
 			<h:outputLabel>Número de páginas</h:outputLabel>
-			<h:inputText value="#{adminBooksBean.product.numberOfPages}" />
+			<h:inputText value="#{adminBooksBean.product.numberOfPages}" required="true" id="npagina" requiredMessage="Campo obrigatório"/>
+			<h:message for="npagina"/>
 		</div>
 		<div>
 			<h:outputLabel>Preço</h:outputLabel>
-			<h:inputText value="#{adminBooksBean.product.price}" />
+			<h:inputText value="#{adminBooksBean.product.price}" required="true" id="preco" requiredMessage="Campo obrigatório"/>
+			<h:message for="preco"/>
 		</div>		
 		<h:commandButton value="Gravar" action="#{adminBooksBean.save}" />
 	</h:form>
