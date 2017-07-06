@@ -4,33 +4,33 @@ import java.io.IOException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 
 @RequestScoped
 public class FileServer {
 	
 	@Inject
-	private HttpServletRequest request;
+	private AmazonS3Client s3;
 	
 	private static final String CONTENT_DISPOSITION = "content-disposition";
 	
 	private static final String FILENAME_KEY = "filename=" ;
 	
 	public String write(String baseFolder, Part multipartFile){
-		String realPath = request.getServletContext().getRealPath("/"+baseFolder);
 		
 		String fileName = extractFilename(multipartFile.getHeader(CONTENT_DISPOSITION));
-		
-		String path = realPath + "/" + fileName;
-		
+				
 		try {
-			multipartFile.write(path);
-		} catch (IOException e) {
+			s3.putObject("casadocodigo", fileName, multipartFile.getInputStream(), new ObjectMetadata());
+			return "http://localhost:9444/s3/casadocodigo/"+fileName+"?noAuth=thrue";
+		} catch (AmazonClientException | IOException e) {
 			throw new RuntimeException(e);
 		}
-		
-		return baseFolder + "/" + fileName;		
+				
 	}
 	
 	private String extractFilename(String contentDisposition){
