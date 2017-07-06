@@ -51,6 +51,7 @@ public class Book {
 	@Future
 	private Calendar releaseDate;
 	
+	private String coverPath;	
 
 	public Integer getId() {
 		return id;
@@ -112,6 +113,14 @@ public class Book {
 
 	public void setReleaseDate(Calendar releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+
+	public String getCoverPath() {
+		return coverPath;
+	}
+
+	public void setCoverPath(String coverPath) {
+		this.coverPath = coverPath;
 	}
 	
 	

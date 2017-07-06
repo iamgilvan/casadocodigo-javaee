@@ -5,7 +5,7 @@
       xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:body>
-	<h:form prependId="false">
+	<h:form enctype="multipart/form-data">
 		<div>
 			<h:outputLabel>Titulo: </h:outputLabel>
 			<h:inputText value="#{adminBooksBean.product.title}" id="titulo"/>
@@ -36,7 +36,11 @@
 			<h:outputLabel>Preço: </h:outputLabel>
 			<h:inputText value="#{adminBooksBean.product.price}" id="preco" />
 			<h:message for="preco"/>
-		</div>		
+		</div>
+		<div>
+			<h:outputLabel value="Capa do livro" />
+			<h:inputFile id="cover" value="#{adminBooksBean.cover}" label="Capa do livro" />
+		</div>
 		<h:commandButton value="Gravar" action="#{adminBooksBean.save}" />
 	</h:form>
 </h:body>

@@ -6,9 +6,11 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
+import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 
 import br.com.casadocodigo.loja.daos.BookDAO;
+import br.com.casadocodigo.loja.infra.FileServer;
 import br.com.casadocodigo.loja.infra.MessagesHelper;
 import br.com.casadocodigo.loja.models.Author;
 import br.com.casadocodigo.loja.models.Book;
@@ -24,10 +26,17 @@ public class AdminBooksBean {
 	
 	@Inject
 	private MessagesHelper messagesHelper;
+	
+	private Part cover;
+	
+	@Inject
+	private FileServer fileServer;
 
 	@Transactional
 	public String save(){
 		populateBookAuthor();
+		String coverPath = fileServer.write("covers", cover);
+		product.setCoverPath(coverPath);
 		productDAO.save(product);
 		clearObjects();
 		
@@ -61,5 +70,15 @@ public class AdminBooksBean {
 	public void setSelectedAuthorsIds(List<String> selectedAuthorsIds) {
 		this.selectedAuthorsIds = selectedAuthorsIds;
 	}
+
+	public Part getCover() {
+		return cover;
+	}
+
+	public void setCover(Part cover) {
+		this.cover = cover;
+	}
+	
+	
 	
 }
