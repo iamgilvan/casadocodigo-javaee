@@ -18,12 +18,13 @@
 			<h:column>
 				<f:facet name="header">Autores</f:facet>
 					<ui:repeat var="author" value="#{book.authors}">
-						#{author.name} |
+						 #{author.name} |
 					</ui:repeat>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Imagem</f:facet>
-				<h:graphicImage value="/#{book.coverPath}"/>
+				<h:outputLink value="#{book.coverPath}">#{book.coverPath}</h:outputLink>
+				<!-- Mostrar a imagem <h:graphicImage value="#{book.coverPath}"/> -->
 			</h:column>
 		</h:dataTable>
 	</h:body>
