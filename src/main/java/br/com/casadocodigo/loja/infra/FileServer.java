@@ -25,8 +25,8 @@ public class FileServer {
 		String fileName = extractFilename(multipartFile.getHeader(CONTENT_DISPOSITION));
 				
 		try {
-			s3.putObject("casadocodigo", fileName, multipartFile.getInputStream(), new ObjectMetadata());
-			return "http://localhost:9444/s3/casadocodigo/"+fileName+"?noAuth=true";
+			s3.putObject("casadocodigo/"+baseFolder, fileName, multipartFile.getInputStream(), new ObjectMetadata());
+			return "http://localhost:9444/s3/casadocodigo/"+baseFolder+"_"+fileName+"?noAuth=true";
 		} catch (AmazonClientException | IOException e) {
 			throw new RuntimeException(e);
 		}

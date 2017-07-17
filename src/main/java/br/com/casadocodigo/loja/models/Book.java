@@ -51,7 +51,8 @@ public class Book {
 	@Future
 	private Calendar releaseDate;
 	
-	private String coverPath;	
+	private String coverPath;
+	private String summaryPath;
 
 	public Integer getId() {
 		return id;
@@ -122,10 +123,13 @@ public class Book {
 	public void setCoverPath(String coverPath) {
 		this.coverPath = coverPath;
 	}
-	
-	
-	
-	
-	
+
+	public String getSummaryPath() {
+		return summaryPath;
+	}
+
+	public void setSummaryPath(String summaryPath) {
+		this.summaryPath = summaryPath;
+	}	
 
 }

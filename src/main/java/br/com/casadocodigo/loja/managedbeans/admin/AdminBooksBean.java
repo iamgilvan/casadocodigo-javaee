@@ -28,6 +28,7 @@ public class AdminBooksBean {
 	private MessagesHelper messagesHelper;
 	
 	private Part cover;
+	private Part summary;
 	
 	@Inject
 	private FileServer fileServer;
@@ -36,7 +37,10 @@ public class AdminBooksBean {
 	public String save(){
 		populateBookAuthor();
 		String coverPath = fileServer.write("covers", cover);
+		String summaryPath = fileServer.write("summaries", summary);
+		
 		product.setCoverPath(coverPath);
+		product.setCoverPath(summaryPath);
 		productDAO.save(product);
 		clearObjects();
 		
@@ -78,6 +82,15 @@ public class AdminBooksBean {
 	public void setCover(Part cover) {
 		this.cover = cover;
 	}
+
+	public Part getSummary() {
+		return summary;
+	}
+
+	public void setSummary(Part summary) {
+		this.summary = summary;
+	}
+	
 	
 	
 	

@@ -2,15 +2,18 @@ package br.com.casadocodigo.loja.daos;
 
 import java.util.List;
 
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import br.com.casadocodigo.loja.models.Book;
 
-
+@Stateful
 public class BookDAO {
 	
-	@PersistenceContext
+	//manter o objeto criado mesmo depois de um método execudado
+	@PersistenceContext(type=PersistenceContextType.EXTENDED)
 	private EntityManager manager;
 		
 	public void save(Book product) {
@@ -30,5 +33,9 @@ public class BookDAO {
 	public List<Book> olderBooks(){
 		return manager.createQuery(
 				"select b from Book b", Book.class).setMaxResults(20).getResultList();
+	}
+	
+	public Book findById(Integer id){
+		return manager.createQuery("select b from Book b join fetch b.authors where b.id=:id",Book.class).setParameter("id", id).getSingleResult();
 	}
 }
