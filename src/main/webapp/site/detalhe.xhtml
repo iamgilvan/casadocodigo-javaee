@@ -2,7 +2,8 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 <f:metadata>
 	<f:viewParam id="id" name="id" value="#{productDetailBean.id}" />
@@ -83,7 +84,7 @@
 		</header>
 
 		<section class="buy-options clearfix">
-			<form action="/cart/add" method="post" class="container">
+			<form jsf:id="form" method="post" class="container">
 				<ul id="variants" class="clearfix">
 					<li class="buy-option">
 						<input type="radio" name="id" class="variant-radio"	id="product-variant-#{productDetailBean.book.id}" value="#{productDetailBean.book.id}" checked="checked" />
@@ -93,7 +94,7 @@
 					</li>
 				</ul>
 
-				<button type="submit" class="submit-image icon-basket-alt" title="#{productDetailBean.book.title}"></button>
+				<button type="submit" jsf:action="{shoppingCartBean.add(productDetailBean..book.id)}" class="submit-image icon-basket-alt" title="#{productDetailBean.book.title}"></button>
 			</form>
 		</section>
 
