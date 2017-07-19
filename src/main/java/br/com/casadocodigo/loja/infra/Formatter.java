@@ -8,6 +8,9 @@ public class Formatter {
 	private SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public String dateFormat(Calendar calendar){
+		if(calendar == null){
+			return "";
+		}
 		return dateFormatter.format(calendar.getTime());
 	}
 

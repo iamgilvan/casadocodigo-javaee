@@ -7,8 +7,11 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import br.com.casadocodigo.loja.models.ShoppingItem;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
+@Named
+@SessionScoped
 public class ShoppingCart implements Serializable{
 	
 	private static final long serialVersionUID = 7850305149527655083L;
