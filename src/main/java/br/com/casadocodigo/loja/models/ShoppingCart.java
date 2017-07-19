@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import br.com.casadocodigo.loja.models.ShoppingItem;
+
 public class ShoppingCart implements Serializable{
 	
 	private static final long serialVersionUID = 7850305149527655083L;
@@ -37,7 +39,7 @@ public class ShoppingCart implements Serializable{
 		return item.getTotal(getQuantity(item));
 	}
 	
-	public BigDecimal getTotal(ShoppingItem item){
+	public BigDecimal getTotal(){
 		BigDecimal total = BigDecimal.ZERO;
 		
 		for(ShoppingItem item : items.keySet()){
@@ -48,7 +50,7 @@ public class ShoppingCart implements Serializable{
 	}
 	
 	public void remove (ShoppingItem shoppingItem){
-		items.remove(shoppingItem)
+		items.remove(shoppingItem);
 	}
 	
 	public boolean isEmpty(){

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import br.com.casadocodigo.loja.daos.BookDAO;
 import br.com.casadocodigo.loja.models.Book;
 import br.com.casadocodigo.loja.models.ShoppingCart;
+import br.com.casadocodigo.loja.models.ShoppingItem;
 
 @Model
 public class ShoppingCartBean {
@@ -18,14 +19,14 @@ public class ShoppingCartBean {
 	
 	public String add(Integer id){
 		Book book = bookDAO.findById(id);
-		ShoppingtItem item = new ShoppingItem(book);
+		ShoppingItem item = new ShoppingItem(book);
 		shoppingCart.add(item);
 		return "/site/carrinho?faces-redirect=true";
 	}
 	
 	public String remove(Integer id){
 		Book book = bookDAO.findById(id);
-		ShoppingtItem item = new ShoppingItem(book);
+		ShoppingItem item = new ShoppingItem(book);
 		shoppingCart.remove(item);
 		return "/site/carrinho?faces-redirect=true";
 	}
