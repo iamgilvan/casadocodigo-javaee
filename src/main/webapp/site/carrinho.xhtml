@@ -101,7 +101,8 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra " id="checkout"/></td>
+          <!--<td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra " id="checkout"/></td> -->
+          <td colspan="3"><a href="${request.contextPath}/site/checkout.xhtml" id="checkout" class="checkout" >Finalizar compra</a></td>
           <td class="quantity-input-cell"><input type="submit" class="update-cart" name="update" value=""/></td>
           <td class="numeric-cell">R$ #{shoppingCart.total}</td><td></td>
         </tr>
