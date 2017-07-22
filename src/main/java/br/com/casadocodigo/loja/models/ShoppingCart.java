@@ -9,6 +9,8 @@ import java.util.Map;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 
 @Named
 @SessionScoped
@@ -58,6 +60,14 @@ public class ShoppingCart implements Serializable{
 	
 	public boolean isEmpty(){
 		return items.isEmpty();
+	}
+	
+	public String toJson(){
+		JsonArrayBuilder itens = Json.createArrayBuilder();
+		for( ShoppingItem item : getList()){
+			itens.add(Json.createObjectBuilder().add("Title", item.getBook().getTitle()).add("Price", item.getBook().getPrice()).add("Quantity", getQuantity(item).intValue()).add("Sum", getTotal(item)));
+		}
+		return itens.build().toString();
 	}
 
 }
