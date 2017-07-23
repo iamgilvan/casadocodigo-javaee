@@ -90,7 +90,8 @@
       <tbody>
       <ui:repeat var="item" value="#{shoppingCart.list}">
 	        <tr>
-	          <td class="cart-img-col"><img src="#{item.book.coverPath}" width="71px" height="100px"/></td><td class="item-title">#{item.book.title}</td>
+	          <td class="cart-img-col"><img src="#{item.book.coverPath}" width="71px" height="100px"/></td>
+	          <td class="item-title">#{item.book.title}</td>
 	          <td class="numeric-cell">R$ #{item.price}</td>
 	          <td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="updates_4082273665" name="updates[4082273665]" value="#{shoppingCart.getQuantity(item)}"/></td>
 	          <td class="numeric-cell">R$ #{shoppingCart.getTotal(item)}</td>

@@ -31,7 +31,7 @@ public class SystemUser {
 
 	@NotBlank(groups=BuyerGroup.class)
 	@Column(unique = true)
-	private String socilId;
+	private String socialId;
 
 	@NotBlank(groups=BuyerGroup.class)
 	private String address;
@@ -76,11 +76,11 @@ public class SystemUser {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getSocilId() {
-		return socilId;
+	public String getSocialId() {
+		return socialId;
 	}
-	public void setSocilId(String socilId) {
-		this.socilId = socilId;
+	public void setSocialId(String socialId) {
+		this.socialId = socialId;
 	}
 	public String getAddress() {
 		return address;
