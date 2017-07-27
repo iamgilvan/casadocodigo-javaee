@@ -1,10 +1,13 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -51,6 +54,14 @@ public class SystemUser {
 	@NotBlank(groups=BuyerGroup.class)
 	private String country;
 	private String password;
+	
+	@Column(unique=true)
+	private String uuid;
+	
+	@PrePersist
+	public void prePersist(){
+		this.uuid = UUID.randomUUID().toString();
+	}
 	
 	public Integer getId() {
 		return id;
@@ -124,6 +135,15 @@ public class SystemUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+	
 	
 	
 

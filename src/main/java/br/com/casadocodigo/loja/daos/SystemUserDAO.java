@@ -14,4 +14,7 @@ public class SystemUserDAO {
 		entityManager.persist(systemUser);
 	}
 
+	public SystemUser findByUuid(String uuid){
+		return entityManager.createQuery("select su from SystemUser su where su.uuid=:uuid", SystemUser.class).setParameter("uuid", uuid).getSingleResult();
+	}
 }

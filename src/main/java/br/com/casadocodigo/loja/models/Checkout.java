@@ -1,7 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +28,20 @@ public class Checkout {
 		this.buyer = user;
 		this.value = cart.getTotal();
 		this.jsonCart = cart.toJson();
+	}
+	
+	
+	
+	public SystemUser getBuyer() {
+		return buyer;
+	}
+	
+	public String getJsonCart() {
+		return jsonCart;
+	}
+
+	public BigDecimal getValue() {
+		return value;
 	}
 
 }
