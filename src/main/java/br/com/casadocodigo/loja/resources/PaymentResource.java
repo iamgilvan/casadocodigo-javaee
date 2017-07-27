@@ -44,7 +44,6 @@ public class PaymentResource {
 				
 				paymentGateway.pay(total);
 				
-				//código de integraçãom execução assícrona
 				URI redirectURI = UriBuilder.fromUri(contextPath+"/site/index.xhtml").queryParam("msg", "Compra realizada com sucesso").build();
 				Response response = Response.seeOther(redirectURI).build();
 				

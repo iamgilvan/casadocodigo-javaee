@@ -1,11 +1,13 @@
 package br.com.casadocodigo.loja.models;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
+@Cacheable
 public class Author {
 	
 	@Id
