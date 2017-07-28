@@ -11,7 +11,7 @@ Maven,
 S3Ninja, 
 JTA,
 EJB,
-JAX-RS,
+JAX-RS,...
 
 E por ai vai. Mas você pode ver na integra no arquivo pom.xml.
 Abraço.
