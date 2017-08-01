@@ -19,7 +19,7 @@ public class HomeBean {
 	}
 	
 	public List<Book> olderBooks(){
-		return bookDao.olderBooks();
+		return bookDao.olderBooks(20);
 	}
 
 }

@@ -16,6 +16,11 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -24,6 +29,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Cacheable
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Book {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -48,6 +55,8 @@ public class Book {
 	@Size(min = 1)
 	@NotNull
 	@Cache(usage=CacheConcurrencyStrategy.TRANSACTIONAL)
+	@XmlElement(name="author")
+	@XmlElementWrapper(name="authors")
 	private List<Author> authors = new ArrayList<>();
 	
 	@NotNull

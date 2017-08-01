@@ -30,9 +30,9 @@ public class BookDAO {
 				"select b from Book b where b.releaseDate <= now() order by b.id desc", Book.class).setMaxResults(3).getResultList();
 	}
 	
-	public List<Book> olderBooks(){
+	public List<Book> olderBooks(int number){
 		return manager.createQuery(
-				"select b from Book b", Book.class).setMaxResults(20).getResultList();
+				"select b from Book b join fetch b.authors", Book.class).setMaxResults(number).getResultList();
 	}
 	
 	public Book findById(Integer id){
