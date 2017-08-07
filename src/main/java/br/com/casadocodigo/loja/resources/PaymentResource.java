@@ -17,7 +17,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
-import br.com.casadocodigo.loja.models.ShoppingCart;
+import br.com.casadocodigo.loja.daos.CheckoutDAO;
+import br.com.casadocodigo.loja.models.BroadcastCheckout;
+import br.com.casadocodigo.loja.models.Checkout;
 import br.com.casadocodigo.loja.services.PaymentGateway;
 
 @Path("payment")
@@ -29,21 +31,27 @@ public class PaymentResource {
 	private ServletContext ctx;
 
 	@Inject
-	private ShoppingCart cart;
+	private CheckoutDAO checkoutDAO; 
 	
 	@Inject
 	private PaymentGateway paymentGateway;
 	
+	@Inject
+	private BroadcastCheckout broadcastCheckout;
+	
 	@GET
 	public void pay(@Suspended final AsyncResponse ar,@QueryParam("uuid") String uuid){
-		String contextPath = ctx.getContextPath();	
+		String contextPath = ctx.getContextPath();
+		Checkout checkout = checkoutDAO.findByUuid(uuid);
+		
 		executor.submit(() -> {
-			BigDecimal total = cart.getTotal();
+			BigDecimal total = checkout.getValue();
 			
 			try {	
 				
 				paymentGateway.pay(total);
 				
+				broadcastCheckout.execute(checkout);
 				URI redirectURI = UriBuilder.fromUri(contextPath+"/site/index.xhtml").queryParam("msg", "Compra realizada com sucesso").build();
 				Response response = Response.seeOther(redirectURI).build();
 				
