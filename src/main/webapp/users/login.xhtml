@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<form method="post" action="${request.getContextPath()}/j_security_check">
+		<div>
+			<label for="email">Email</label>
+			<input type="text" name="j_username" id="email"/>
+		</div>
+		
+		<div>
+			<label for="password">Senha</label>
+			<input type="password" name="j_password" id="password"/>
+		</div>
+		
+		<input type="submit" value="Login"/>
+	</form>
+</body> 
+</html>

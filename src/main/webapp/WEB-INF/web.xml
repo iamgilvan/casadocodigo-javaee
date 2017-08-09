@@ -10,6 +10,15 @@
   <param-name>resteasy.media.type.mappings</param-name>
   <param-value>html : text/html, json : application/json, xml : application/xml</param-value>
  </context-param>
+ 
+ <login-config>
+ 	<auth-method>FORM</auth-method>
+ 	<realm-name>database-login</realm-name>
+ 	<form-login-config>
+ 		<form-login-page>/users/login.xhtml</form-login-page>
+ 		<form-error-page>/users/login-error.xhtml</form-error-page>
+ 	</form-login-config>
+ </login-config>	
  <security-constraint>
  	<display-name>Administracao</display-name>
  	<web-resource-collection>
