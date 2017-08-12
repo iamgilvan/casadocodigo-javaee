@@ -27,6 +27,7 @@ import br.com.casadocodigo.loja.security.AllowedRoles;
 @Entity
 public class SystemUser implements UserDetails {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -63,10 +64,8 @@ public class SystemUser implements UserDetails {
 
 	@NotBlank(groups=BuyerGroup.class)
 	private String country;
+		
 	private String password;
-	
-	@Column(unique=true)
-	private String uuid;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<SystemRole> roles = new ArrayList<>();
@@ -77,7 +76,6 @@ public class SystemUser implements UserDetails {
 	
 	@PrePersist
 	public void prePersist(){
-		this.uuid = UUID.randomUUID().toString();
 		if(StringUtils.isBlank(password)){
 			this.password = new BCryptPasswordEncoder().encode("123456");
 			this.roles.add(new SystemRole(AllowedRoles.ROLE_COMPRADOR.name()));
@@ -157,17 +155,6 @@ public class SystemUser implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
-
-
-
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

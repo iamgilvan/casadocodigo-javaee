@@ -8,6 +8,11 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 public class SystemRole implements GrantedAuthority {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private String name;
 	
@@ -34,6 +39,7 @@ public class SystemRole implements GrantedAuthority {
 		return result;
 	}
 	
+	@Override
 	public boolean equals(Object obj){
 		if (this == obj) return true;
 		if (obj == null) return false;
@@ -47,13 +53,13 @@ public class SystemRole implements GrantedAuthority {
 		return true;
 	}
 
-	public String getName() {
+	/*public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
+	}*/
 
 	
 
