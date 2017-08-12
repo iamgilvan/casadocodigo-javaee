@@ -169,7 +169,7 @@
 		    <version>2.0</version>
 		</dependency>
 		
-		<!-- spring security -->
+		<!-- spring -->
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
