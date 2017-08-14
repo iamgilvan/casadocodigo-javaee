@@ -5,6 +5,9 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 	<h:body>
+		<div>
+			Seja bem vindo, #{currentUser.login}
+		</div>
 		<h:messages id="messages"/>
 		<h:dataTable value="#{adminListBookBean.books}" var="book">
 			<h:column>
