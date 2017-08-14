@@ -185,8 +185,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>4.1.0.RELEASE</version>
-		</dependency>	
-						
+		</dependency>
+		
     </dependencies>
   <build>
     <finalName>casadocodigo-javaee</finalName>
