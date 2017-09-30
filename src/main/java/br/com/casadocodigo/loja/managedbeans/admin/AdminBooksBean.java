@@ -48,7 +48,7 @@ public class AdminBooksBean {
 		messagesHelper.addFlash(new FacesMessage("Livro Gravado com sucesso"));
 		
 		//redirect do lado do cliente
-		return "/livros/lista?faces-redirect=true";
+		return "/admin/livros/lista?faces-redirect=true";
 	}
 	
 	//método para limpar formulário

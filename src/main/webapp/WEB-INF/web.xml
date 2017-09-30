@@ -2,13 +2,34 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
  <display-name>casadocodigo-javaee</display-name>
+ 
+ <servlet>
+  <servlet-name>jsf</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+  <servlet-name>jsf</servlet-name>
+  <url-pattern>*.xhtml</url-pattern>
+ </servlet-mapping>
+ 
+ <welcome-file-list>
+  <welcome-file>/site/index.xhtml</welcome-file>
+ </welcome-file-list>
+ 
  <context-param>
   <param-name>javax.faces.PROJECT_STAGE</param-name>
   <param-value>Development</param-value>
  </context-param>
+ 
  <context-param>
   <param-name>resteasy.media.type.mappings</param-name>
   <param-value>html : text/html, json : application/json, xml : application/xml</param-value>
+ </context-param>
+ 
+ <context-param>
+ 		<param-name>org.omnifaces.CACHE_SETTING_APPLICATION_TTL</param-name>
+ 		<param-value>900</param-value>
  </context-param>
  
  <login-config>
@@ -18,32 +39,31 @@
  		<form-login-page>/users/login.xhtml</form-login-page>
  		<form-error-page>/users/login-error.xhtml</form-error-page>
  	</form-login-config>
- </login-config>	
+ </login-config>
+ 	
  <security-constraint>
  	<display-name>Administracao</display-name>
  	<web-resource-collection>
  		<web-resource-name>administracao</web-resource-name>
  		<description>Urls que levam para paginas de administracao</description>
- 		<url-pattern>/livros/*</url-pattern>
+ 		<url-pattern>/admin/*</url-pattern>
  		<http-method>GET</http-method>
  		<http-method>POST</http-method>
  	</web-resource-collection>
  	<auth-constraint>
  		<role-name>ROLE_ADMIN</role-name>
- 	</auth-constraint>	
+ 		<role-name>ADMIN</role-name>
+ 	</auth-constraint>
  </security-constraint>
+ 
  <security-role>
  	<role-name>ROLE_ADMIN</role-name>
  </security-role>
- <servlet>
-  <servlet-name>jsf</servlet-name>
-  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
- </servlet>
- <servlet-mapping>
-  <servlet-name>jsf</servlet-name>
-  <url-pattern>*.xhtml</url-pattern>
- </servlet-mapping>
- <welcome-file-list>
-  <welcome-file>index.xhtml</welcome-file>
- </welcome-file-list>
+ <security-role>
+ 	<role-name>ADMIN</role-name>
+ </security-role>
+ <session-config>
+	<session-timeout>15</session-timeout>
+</session-config>
+
 </web-app>
