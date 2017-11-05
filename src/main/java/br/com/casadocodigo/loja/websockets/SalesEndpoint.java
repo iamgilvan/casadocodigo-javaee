@@ -1,5 +1,7 @@
 package br.com.casadocodigo.loja.websockets;
 
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
@@ -11,7 +13,13 @@ public class SalesEndpoint {
 	
 	@OnOpen
 	public void onNewUser(Session session){
-		System.out.println("Principal "  + session.getUserPrincipal());
-		System.out.println("Adicionou? " + connectedUsers.add(session));
+		connectedUsers.add(session);
 	}
+	
+	@OnClose
+	public void onClose(Session session, CloseReason closeReason) {
+		System.out.println(connectedUsers.remove(session));
+		System.out.println(closeReason.getCloseCode());
+	}
+	
 }
