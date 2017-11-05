@@ -6,7 +6,9 @@
 
 	<h:body>
 		<div>
-			Seja bem vindo, #{currentUser.login}
+			<h:outputFormat value="#{msg.usuarios_bemVindo}">
+				<f:param value="#{currentUser.get().email}"/>
+			u</h:outputFormat> />
 		</div>
 		<h:messages id="messages"/>
 		<h:dataTable value="#{adminListBookBean.books}" var="book">
