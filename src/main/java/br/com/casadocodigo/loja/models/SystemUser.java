@@ -17,15 +17,13 @@ import javax.persistence.PrePersist;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.casadocodigo.loja.models.validation.groups.BuyerGroup;
 import br.com.casadocodigo.loja.security.AllowedRoles;
+import br.com.casadocodigo.loja.security.PassGenerator;
 
 @Entity
-public class SystemUser implements UserDetails {
+public class SystemUser{
 
 
 	@Id
@@ -77,7 +75,7 @@ public class SystemUser implements UserDetails {
 	@PrePersist
 	public void prePersist(){
 		if(StringUtils.isBlank(password)){
-			this.password = new BCryptPasswordEncoder().encode("123456");
+			this.password = PassGenerator.generate("123456");
 			this.roles.add(new SystemRole(AllowedRoles.ROLE_COMPRADOR.name()));
 		}
 	}
@@ -148,7 +146,8 @@ public class SystemUser implements UserDetails {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	@Override
+	
+	
 	public String getPassword() {
 		return this.password;
 	}
@@ -156,57 +155,5 @@ public class SystemUser implements UserDetails {
 		this.password = password;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return this.roles;
-	}
-
 	
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return this.email;
-	}
-
-
-
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-
-
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-
-
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-
-
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	
-	
-
 }
